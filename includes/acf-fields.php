@@ -31,7 +31,7 @@ acf_add_local_field_group(array(
 			'library' => 'all',
 			'min_size' => '',
 			'max_size' => '',
-			'mime_types' => '',
+			'mime_types' => 'pdb',
 		),
 	),
 	'location' => array(

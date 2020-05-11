@@ -67,3 +67,10 @@ function tdmol_acf_settings_show_admin( $show_admin ) {
 require_once plugin_dir_path(__FILE__) . '/includes/acf-fields.php';
 
 
+
+//allow for PDB upload (see about other types later)
+function tdmol_new_custom_mime_types( $mimes ) {
+    $mimes['pdb'] = 'text/plain';//'application/x-ghemical';//'application/octet-stream';//'chemical/x-pdb';
+    return $mimes;
+}
+add_filter( 'upload_mimes', 'tdmol_new_custom_mime_types' );
