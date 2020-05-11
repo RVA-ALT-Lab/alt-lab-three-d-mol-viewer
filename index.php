@@ -49,13 +49,11 @@ function tdmol_display_data($content){
   $post_id = $post->ID;
   if (get_field('molecule_file', $post_id)){
     $mol_url = get_field('molecule_file', $post_id);
-    return $content . '<div class="">'.$mol_url.'</div>';
+    return $content . '<iframe src="https://rampages.us/extras/three-d-mol/viewer.html?url='.$mol_url.'b&type=pdb&style=cartoon:color~spectrum;stick:radius~0.25,colorscheme~greenCarbon&select=bonds:0&style=sphere:radius~.75" width="100%" height="800px"></iframe>';
   } else {
     return $content;
   }
-
 }
-
 
 add_filter( 'the_content', 'tdmol_display_data');
 
