@@ -43,8 +43,23 @@ if ( ! function_exists('write_log')) {
 
   //print("<pre>".print_r($a,true)."</pre>");
 
-// Define path and URL to the ACF plugin.
 
+function tdmol_display_data($content){
+  global $post;
+  $post_id = $post->ID;
+  if (get_field('molecule_file', $post_id)){
+    $mol_url = get_field('molecule_file', $post_id);
+    return $content . '<div class="">'.$mol_url.'</div>';
+  } else {
+    return $content;
+  }
+
+}
+
+
+add_filter( 'the_content', 'tdmol_display_data');
+
+// Define path and URL to the ACF plugin.
 define( 'TDMOL_ACF_PATH', plugin_dir_url(__FILE__) . 'includes/acf/' );
 define( 'TDMOL_ACF_URL', plugin_dir_url(__FILE__) . 'includes/acf/' );
 
