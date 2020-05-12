@@ -15,15 +15,15 @@ Text Domain: my-toolset
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 
-//add_action('wp_enqueue_scripts', 'prefix_load_scripts');
+add_action('wp_enqueue_scripts', 'prefix_load_scripts');
 
 function prefix_load_scripts() {                           
     $deps = array('jquery');
     $version= '1.0'; 
     $in_footer = true;    
     wp_enqueue_script( 'jQuery', '', null, null, true );
-    wp_enqueue_script('3dmol-viewer-main-js', plugin_dir_url( __FILE__ ) . 'js/tdmol-viewer-main.js', $deps, $version, $in_footer); 
-    wp_enqueue_style( '3dmol-viewer-main-css', plugin_dir_url( __FILE__ ) . 'css/tdmol-viewer-main.css');
+    wp_enqueue_script('3dmol-viewer-main-js', plugin_dir_url( __FILE__ ) . 'js/tdmol-main.js', $deps, $version, $in_footer); 
+    wp_enqueue_style( '3dmol-viewer-main-css', plugin_dir_url( __FILE__ ) . 'css/tdmol-main.css');
 }
 
 
