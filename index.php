@@ -1,6 +1,6 @@
 <?php 
 /*
-Plugin Name: ALT Lab 3dMol Viewer
+Plugin Name: ALT Lab 3dmol Molecule Viewer
 Plugin URI:  https://github.com/
 Description: Using the awesome 3dMol Viewer in WordPress https://3dmol.csb.pitt.edu/
 Version:     1.0
@@ -47,8 +47,15 @@ if ( ! function_exists('write_log')) {
 function tdmol_display_data($content){
   global $post;
   $post_id = $post->ID;
-  if (get_field('molecule_file', $post_id)){
-    $mol_url = get_field('molecule_file', $post_id);
+  if (get_field('molecule_file', $post_id) || get_field('molecule_url', $post_id)){
+    if(get_field('molecule_file', $post_id))
+    {
+      $mol_url = get_field('molecule_file', $post_id);
+    } 
+    if (get_field('molecule_url', $post_id))
+    {
+      $mol_url = get_field('molecule_url', $post_id);
+    }
     return $content . '<iframe frameBorder="0" src="https://rampages.us/extras/three-d-mol/viewer.html?url='.$mol_url.'&type=pdb&style=cartoon:color~spectrum;stick:radius~0.25,colorscheme~greenCarbon&select=bonds:0&style=sphere:radius~.75" width="100%" height="800px"></iframe><a class="btn-mol" href="https://rampages.us/extras/three-d-mol/viewer.html?url='.$mol_url.'&type=pdb&style=cartoon:color~spectrum;stick:radius~0.25,colorscheme~greenCarbon&select=bonds:0&style=sphere:radius~.75" target="_blank">Open in a new tab</a>';
   } else {
     return $content;
